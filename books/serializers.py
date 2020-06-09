@@ -8,5 +8,6 @@ class BookSerializer(serializers.ModelSerializer):
       'title',
       'author',
       'description',
+      'owner'
     )
     model = Book
