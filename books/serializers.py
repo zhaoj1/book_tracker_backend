@@ -3,7 +3,6 @@ from rest_framework_jwt.settings import api_settings
 from .models import Book
 
 class BookSerializer(serializers.ModelSerializer):
-  
   class Meta:
     fields = (
       'id',
