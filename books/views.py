@@ -44,16 +44,16 @@ from rest_framework import serializers
 from rest_framework.views import APIView
 
 from .models import Book
-from .serializers import BookSerializer
+from .serializers import BookSerializerWithToken
 
 class BookView(APIView):
   def get(self, request):
     books = Book.objects.all()
-    serializer = BookSerializer(books, many=True)
+    serializer = BookSerializerWithToken(books, many=True)
     return Response({'books':serializer.data})
 
   def post(self, request):
-    serializer = BookSerializer(data=book)
+    serializer = BookSerializerWithToken(data=book)
     if serializer.is_valid(raise_exception=True):
       book_saved = serializer.save()
     return Response({'success':"Book `{}` created successfully".format(book_saved.title)})
