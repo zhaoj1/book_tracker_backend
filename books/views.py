@@ -42,6 +42,7 @@
 
 from rest_framework import serializers
 from rest_framework.views import APIView
+from rest_framework import permissions, status
 
 from .models import Book
 from .serializers import BookSerializerWithToken
@@ -52,11 +53,11 @@ class BookView(APIView):
     serializer = BookSerializerWithToken(books, many=True)
     return Response({'books':serializer.data})
 
-  def post(self, request):
-    serializer = BookSerializerWithToken(data=book)
-    if serializer.is_valid(raise_exception=True):
-      book_saved = serializer.save()
-    return Response({'success':"Book `{}` created successfully".format(book_saved.title)})
+  # def post(self, request):
+  #   serializer = BookSerializerWithToken(data=book)
+  #   if serializer.is_valid(raise_exception=True):
+  #     book_saved = serializer.save()
+  #   return Response({'success':"Book `{}` created successfully".format(book_saved.title)})
   
   def delete(self, request, pk):
     book = get_object_or_404(Book.objects.all(),pk=pk)
@@ -64,6 +65,7 @@ class BookView(APIView):
     return Response({'message':"Book with id `{}` has been deleted.".format(pk)},status=204)
 
 class BookList(APIView):
+  permission_classes = (permissions.AllowAny,)
   def post(self, request, format=None):
     serializer = BookSerializerWithToken(data=request.data)
     if serializer.is_valid():
