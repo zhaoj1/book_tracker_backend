@@ -8,7 +8,7 @@ class Book(models.Model):
   # owner = models.IntegerField()
 
   title = models.CharField(max_length=200)
-  description = models.CharField(max_length=200)
+  description = models.TextField()
   api_id = models.CharField(max_length=200)
   authors = models.CharField(max_length=200)
   industryIdentifiers = models.CharField(max_length=200)
