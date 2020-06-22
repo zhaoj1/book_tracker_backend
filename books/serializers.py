@@ -11,17 +11,38 @@ from .models import Book
 #     )
 #     model = Book
 class BookSerializer(serializers.Serializer):
-    title = serializers.CharField()
-    description = serializers.CharField()
-    apiID = serializers.CharField()
-    authors = serializers.CharField()
-    industryIdentifiers = serializers.CharField()
-    pageCount = serializers.IntegerField()
-    mainCategory = serializers.CharField()
-    categories = serializers.CharField()
-    infoLink = serializers.CharField()
-    averageRating = serializers.FloatField()
-    ratingsCount = serializers.IntegerField()
+    # title = serializers.CharField()
+    # description = serializers.CharField()
+    # api_id = serializers.CharField()
+    # authors = serializers.CharField()
+    # industryIdentifiers = serializers.CharField()
+    # pageCount = serializers.IntegerField()
+    # mainCategory = serializers.CharField()
+    # categories = serializers.CharField()
+    # infoLink = serializers.CharField()
+    # averageRating = serializers.FloatField()
+    # ratingsCount = serializers.IntegerField()
+    class Meta:
+      model = Book
+      fields = (
+        'id', 
+        'title', 
+        'description', 
+        'api_id', 
+        'authors',
+        'industryIdentifiers',
+        'pageCount',
+        'mainCategory',
+        'categories',
+        'infoLink',
+        'averageRating',
+        'ratingsCount'
+        )
+    
+    # def create(self, validated_data)
+    #   instance = Book.objects.create(**validated_data)
+    #   return instance
+
 
 class BookSerializerWithToken(serializers.ModelSerializer):
   
@@ -42,8 +63,18 @@ class BookSerializerWithToken(serializers.ModelSerializer):
   class Meta:
     fields = (
       'token',
-      'id',
-      'json',
+      'id', 
+      'title', 
+      'description', 
+      'api_id', 
+      'authors',
+      'industryIdentifiers',
+      'pageCount',
+      'mainCategory',
+      'categories',
+      'infoLink',
+      'averageRating',
+      'ratingsCount',
       'owner'
     )
     model = Book

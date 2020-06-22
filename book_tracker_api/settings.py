@@ -12,7 +12,7 @@ SECRET_KEY = 'n-@s$cig)df#x6&c91!b00rw**#a$^9(1(&29!azk!*m(b&hio'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# ALLOWED_HOSTS = [ 'http://localhost:3000', 'http://127.0.0.1:8000' ]
+ALLOWED_HOSTS = [ '127.0.0.1' ]
 
 # Application definition
 
@@ -37,7 +37,10 @@ REST_FRAMEWORK = {
         'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.BasicAuthentication',
-    )
+    ),
+    'DEFAULT_PARSER_CLASSES': [
+        'rest_framework.parsers.JSONParser',
+    ]
 }
 
 JWT_AUTH = {

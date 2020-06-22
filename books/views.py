@@ -53,11 +53,11 @@ class BookView(APIView):
     serializer = BookSerializerWithToken(books, many=True)
     return Response({'books':serializer.data})
 
-  # def post(self, request):
-  #   serializer = BookSerializerWithToken(data=book)
-  #   if serializer.is_valid(raise_exception=True):
-  #     book_saved = serializer.save()
-  #   return Response({'success':"Book `{}` created successfully".format(book_saved.title)})
+  def post(self, request):
+    serializer = BookSerializerWithToken(data=book)
+    if serializer.is_valid(raise_exception=True):
+      book_saved = serializer.save()
+    return Response({'success':"Book `{}` created successfully".format(book_saved.title)})
   
   def delete(self, request, pk):
     book = get_object_or_404(Book.objects.all(),pk=pk)
