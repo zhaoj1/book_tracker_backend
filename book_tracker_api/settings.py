@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'books',
     'core.apps.CoreConfig',
+    'django_mysql',
 ]
 
 REST_FRAMEWORK = {

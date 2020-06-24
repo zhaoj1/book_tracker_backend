@@ -27,22 +27,25 @@ class BookSerializer(serializers.Serializer):
       fields = (
         'id', 
         'title', 
-        'description', 
+        # 'description', 
         'api_id', 
         'authors',
         'industryIdentifiers',
-        'pageCount',
-        'mainCategory',
-        'categories',
-        'infoLink',
-        'averageRating',
-        'ratingsCount'
+        # 'pageCount',
+        # 'mainCategory',
+        # 'categories',
+        # 'infoLink',
+        # 'averageRating',
+        # 'ratingsCount',
+        'owner',
+        'username'
         )
-    
-    # def create(self, validated_data)
-    #   instance = Book.objects.create(**validated_data)
-    #   return instance
-
+      extra_kwargs = {
+        'authors': {'required': False, 'allow_blank': True},
+        'industryIdentifiers': {'required': False, 'allow_blank': True},
+        # 'mainCategory': {'required': False, 'allow_blank': True},
+        # 'categories': {'required': False, 'allow_blank': True}
+      } 
 
 class BookSerializerWithToken(serializers.ModelSerializer):
   
@@ -65,16 +68,17 @@ class BookSerializerWithToken(serializers.ModelSerializer):
       'token',
       'id', 
       'title', 
-      'description', 
+      # 'description', 
       'api_id', 
       'authors',
       'industryIdentifiers',
-      'pageCount',
-      'mainCategory',
-      'categories',
-      'infoLink',
-      'averageRating',
-      'ratingsCount',
-      'owner'
+      # 'pageCount',
+      # 'mainCategory',
+      # 'categories',
+      # 'infoLink',
+      # 'averageRating',
+      # 'ratingsCount',
+      'owner',
+      'username'
     )
     model = Book

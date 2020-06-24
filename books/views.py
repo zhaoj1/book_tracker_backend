@@ -49,6 +49,9 @@ from .models import Book
 from .serializers import BookSerializerWithToken
 
 class BookView(APIView):
+  permission_classes = (permissions.AllowAny)
+  http_method_names = ['get', 'head']
+
   def get(self, request):
     books = Book.objects.all()
     serializer = BookSerializerWithToken(books, many=True)
@@ -66,7 +69,12 @@ class BookView(APIView):
     return Response({'message':"Book with id `{}` has been deleted.".format(pk)},status=204)
 
 class BookList(APIView):
-  permission_classes = (permissions.AllowAny,)
+
+  def get(self, request):
+    books = Book.objects.all()
+    serializer = BookSerializerWithToken(books, many=True)
+    return Response({'books':serializer.data})
+
   def post(self, request, format=None):
     serializer = BookSerializerWithToken(data=request.data)
     if serializer.is_valid():
