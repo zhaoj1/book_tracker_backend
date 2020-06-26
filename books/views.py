@@ -53,7 +53,8 @@ class BookView(APIView):
   http_method_names = ['get', 'head']
 
   def get(self, request):
-    books = Book.objects.all()
+    # books = Book.objects.all()
+    books = filter(lambda book: book.owner == request.user.id, Book.objects.all())
     serializer = BookSerializerWithToken(books, many=True)
     return Response({'books':serializer.data})
 
