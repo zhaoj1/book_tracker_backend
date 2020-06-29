@@ -52,17 +52,17 @@ class BookView(APIView):
   permission_classes = (permissions.AllowAny)
   http_method_names = ['get', 'head']
 
-  def get(self, request):
-    # books = Book.objects.all()
-    books = filter(lambda book: book.owner == request.user.id, Book.objects.all())
-    serializer = BookSerializerWithToken(books, many=True)
-    return Response({'books':serializer.data})
+  # def get(self, request):
+  #   # books = Book.objects.all()
+  #   books = list(filter(lambda x: x.owner == request.user.id, Book.objects.all()))
+  #   serializer = BookSerializerWithToken(books, many=True)
+  #   return Response({'books':serializer.data})
 
-  def post(self, request):
-    serializer = BookSerializerWithToken(data=book)
-    if serializer.is_valid(raise_exception=True):
-      book_saved = serializer.save()
-    return Response({'success':"Book `{}` created successfully".format(book_saved.title)})
+  # def post(self, request):
+  #   serializer = BookSerializerWithToken(data=book)
+  #   if serializer.is_valid(raise_exception=True):
+  #     book_saved = serializer.save()
+  #   return Response({'success':"Book `{}` created successfully".format(book_saved.title)})
   
   def delete(self, request, pk):
     book = get_object_or_404(Book.objects.all(),pk=pk)
@@ -72,7 +72,8 @@ class BookView(APIView):
 class BookList(APIView):
 
   def get(self, request):
-    books = Book.objects.all()
+    # books = Book.objects.all()
+    books = list(filter(lambda x: x.owner == request.user.id, Book.objects.all()))
     serializer = BookSerializerWithToken(books, many=True)
     return Response({'books':serializer.data})
 
