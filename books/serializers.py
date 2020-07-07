@@ -14,7 +14,9 @@ class BookSerializer(serializers.Serializer):
         'isbn10',
         'isbn13',
         'owner',
-        'username'
+        'username',
+        'totalPages',
+        'pagesRead'
         )
       extra_kwargs = {
         'authors': {'required': False, 'allow_blank': True},
@@ -49,6 +51,8 @@ class BookSerializerWithToken(serializers.ModelSerializer):
       'isbn10',
       'isbn13',
       'owner',
-      'username'
+      'username',
+      'totalPages',
+      'pagesRead'
     )
     model = Book
