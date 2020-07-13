@@ -2,13 +2,14 @@ from rest_framework import serializers
 from rest_framework.views import APIView
 from rest_framework import permissions, status
 from rest_framework.response import Response
+from django.shortcuts import get_object_or_404
 
 from .models import Book
 from .serializers import BookSerializerWithToken
 
 class BookView(APIView):
-  permission_classes = (permissions.AllowAny)
-  http_method_names = ['get', 'head']
+  permission_classes = [permissions.AllowAny]
+  http_method_names = ['get', 'head', 'delete']
   
   def delete(self, request, pk):
     book = get_object_or_404(Book.objects.all(),pk=pk)
