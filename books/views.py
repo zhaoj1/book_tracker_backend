@@ -14,7 +14,11 @@ class BookView(APIView):
   def delete(self, request, pk):
     book = get_object_or_404(Book.objects.all(),pk=pk)
     book.delete()
-    return Response({'message':"Book with id `{}` has been deleted.".format(pk)},status=204)
+
+  def update(self, request, pk, validated_data):
+    book = get_object_or_404(Book.objects.all(),pk=pk)
+    pages = validated_data.get('pagesRead', request.pagesRead)
+    book.update(pagesRead=pages)
 
 class BookList(APIView):
 
