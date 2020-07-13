@@ -1,6 +1,4 @@
 from django.db import models
-from jsonfield import JSONField
-from django_mysql.models import ListTextField
 
 class Book(models.Model):
 
@@ -14,6 +12,15 @@ class Book(models.Model):
   username = models.CharField(max_length=200)
   totalPages = models.IntegerField()
   pagesRead = models.IntegerField()
+
+  def __str__(self):
+    return self
+
+class Pages(models.Model):
+
+  pagesRead = models.IntegerField()
+  dateOf = models.DateField()
+  book = models.ForeignKey(Book, on_delete=models.CASCADE)
 
   def __str__(self):
     return self
