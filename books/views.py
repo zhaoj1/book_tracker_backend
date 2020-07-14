@@ -45,3 +45,6 @@ class PageView(APIView):
   def get(self, request, pk):
     pages = Pages.objects.all()
     return Response({pages})
+
+  def post(self, request, format=None):
+    
