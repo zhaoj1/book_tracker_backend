@@ -4,12 +4,18 @@ from rest_framework import permissions, status
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
 
-from .models import Book
+from .models import Book, Pages
 from .serializers import BookSerializerWithToken
 
 class BookView(APIView):
+
   permission_classes = [permissions.AllowAny]
   http_method_names = ['get', 'head', 'delete']
+
+  def get(self, request, pk):
+    book = get_object_or_404(Book.objects.all(),pk=pk)
+    serializer = BookSerializerWithToken(book)
+    return Response(serializer.data)
   
   def delete(self, request, pk):
     book = get_object_or_404(Book.objects.all(),pk=pk)
@@ -33,3 +39,9 @@ class BookList(APIView):
       serializer.save()
       return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class PageView(APIView):
+
+  def get(self, request, pk):
+    pages = Pages.objects.all()
+    return Response({pages})
