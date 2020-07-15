@@ -21,10 +21,10 @@ class BookView(APIView):
     book = get_object_or_404(Book.objects.all(),pk=pk)
     book.delete()
 
-  def update(self, request, pk, validated_data):
-    book = get_object_or_404(Book.objects.all(),pk=pk)
-    pages = validated_data.get('pagesRead', request.pagesRead)
-    book.update(pagesRead=pages)
+  # def update(self, request, pk, validated_data):
+  #   book = get_object_or_404(Book.objects.all(),pk=pk)
+  #   pages = validated_data.get('pagesRead', request.pagesRead)
+  #   book.update(pagesRead=pages)
 
 class BookList(APIView):
 
@@ -47,4 +47,8 @@ class PageView(APIView):
     return Response({pages})
 
   def post(self, request, format=None):
-    
+    serializer = PagesSerializerWithToken(data=request.data)
+    if serializer.is_valid():
+      serializer.save()
+      return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
