@@ -11,16 +11,6 @@ class Book(models.Model):
   owner = models.IntegerField()
   username = models.CharField(max_length=200)
   totalPages = models.IntegerField()
-  pagesRead = models.IntegerField()
-
-  def __str__(self):
-    return self
-
-class Pages(models.Model):
-
-  pagesRead = models.IntegerField()
-  dateOf = models.DateField()
-  book = models.ForeignKey(Book, on_delete=models.CASCADE)
 
   def __str__(self):
     return self

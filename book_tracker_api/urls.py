@@ -8,4 +8,5 @@ urlpatterns = [
     path('token-auth/', obtain_jwt_token),
     path('core/', include('core.urls')),
     path('books/', include('books.urls')),
+    path('pages/', include('pages.urls')),
 ]

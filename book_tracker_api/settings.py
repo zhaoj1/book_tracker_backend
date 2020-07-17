@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'books',
+    'pages',
     'core.apps.CoreConfig',
     'django_mysql',
 ]
