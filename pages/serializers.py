@@ -37,6 +37,6 @@ class PageSerializerWithToken(serializers.ModelSerializer):
       'pagesRead',
       'dateOf',
       'book',
-      'user'
+      'owner'
     )
     model = Page
