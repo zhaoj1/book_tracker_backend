@@ -23,8 +23,8 @@ class PageView(APIView):
 
 class PageList(APIView):
 
-  def get(self, request):
-    pages = list(filter(lambda x: x.user == request.user.id, Page.objects.all()))
+  def get(self, request): 
+    pages = list(filter(lambda x: x.owner == request.user.id, Page.objects.all()))
     serializer = PageSerializerWithToken(pages, many=True)
     return Response({'pages':serializer.data})
 

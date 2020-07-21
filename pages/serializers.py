@@ -34,8 +34,9 @@ class PageSerializerWithToken(serializers.ModelSerializer):
     fields = (
       'token',
       'id', 
+      'username',
       'pagesRead',
-      'dateOf',
+      'dateRead',
       'book',
       'owner'
     )
