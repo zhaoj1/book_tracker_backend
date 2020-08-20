@@ -2,27 +2,6 @@ from rest_framework import serializers
 from rest_framework_jwt.settings import api_settings
 from .models import Book
 
-# class BookSerializer(serializers.Serializer):
-#     class Meta:
-#       model = Book
-#       fields = (
-#         'id', 
-#         'title', 
-#         'api_id', 
-#         'authors',
-#         'imageLink',
-#         'isbn10',
-#         'isbn13',
-#         'owner',
-#         'username',
-#         'totalPages',
-#         'pagesRead'
-#         )
-#       extra_kwargs = {
-#         'authors': {'required': False, 'allow_blank': True},
-#         'industryIdentifiers': {'required': False, 'allow_blank': True},
-#       } 
-
 class BookSerializerWithToken(serializers.ModelSerializer):
   
   token = serializers.SerializerMethodField()

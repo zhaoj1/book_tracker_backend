@@ -2,16 +2,6 @@ from rest_framework import serializers
 from rest_framework_jwt.settings import api_settings
 from .models import Page
 
-# class PagesSerializer(serializers.Serializer):
-#   class Meta:
-#     model = Pages
-#     fields = (
-#       'id', 
-#       'pagesRead',
-#       'dateOf',
-#       'book'
-#     )
-
 class PageSerializerWithToken(serializers.ModelSerializer):
   
   token = serializers.SerializerMethodField()

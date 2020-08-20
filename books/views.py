@@ -20,6 +20,7 @@ class BookView(APIView):
   def delete(self, request, pk):
     book = get_object_or_404(Book.objects.all(),pk=pk)
     book.delete()
+    pages.delete()
 
 class BookList(APIView):
 
