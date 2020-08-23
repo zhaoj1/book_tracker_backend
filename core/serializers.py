@@ -27,7 +27,8 @@ class UserSerializerWithToken(serializers.ModelSerializer):
     instance = self.Meta.model(**validated_data)
     if password is not None:
       instance.set_password(password)
-    instance.save()
+    if len(password)>6:
+      instance.save()
     return instance
 
   class Meta:
