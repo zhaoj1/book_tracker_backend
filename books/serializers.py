@@ -19,6 +19,11 @@ class BookSerializerWithToken(serializers.ModelSerializer):
     instance.save()
     return instance
 
+  def update(self, instance, validated_data):
+    book = Book.objects.get(pk=instance.id)
+    Book.objects.filter(pk=instance.id).update(**validated_data)
+    return book
+
   class Meta:
     fields = (
       'token',

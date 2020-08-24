@@ -16,6 +16,11 @@ class BookView(APIView):
     book = get_object_or_404(Book.objects.all(),pk=pk)
     serializer = BookSerializerWithToken(book)
     return Response(serializer.data)
+
+  def update(self, request, pk=None):
+    book = get_object_or_404(Book.objects.all(),pk=pk)
+    serializer = BookSerializerWithToken(book, data={request.data}, partial=True)
+    return Response(serializer.data)
   
   def delete(self, request, pk):
     book = get_object_or_404(Book.objects.all(),pk=pk)
