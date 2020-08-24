@@ -11,6 +11,7 @@ class Book(models.Model):
   owner = models.IntegerField()
   username = models.CharField(max_length=200)
   totalPages = models.IntegerField()
+  completed = models.BooleanField()
 
   def __str__(self):
     return self

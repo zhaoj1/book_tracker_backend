@@ -31,7 +31,8 @@ class BookSerializerWithToken(serializers.ModelSerializer):
       'isbn13',
       'owner',
       'username',
-      'totalPages'
+      'totalPages',
+      'completed'
     )
     extra_kwargs = {
       'authors': {'required': False, 'allow_blank': True},
