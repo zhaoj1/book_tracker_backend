@@ -13,4 +13,3 @@ Django REST Framework
 ### To Do List
 
 [] Books + Pages + Users - foreign key relationships    
-[] Refresh tokens    
