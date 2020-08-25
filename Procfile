@@ -1,1 +1,1 @@
-web: django
+web: gunicorn
