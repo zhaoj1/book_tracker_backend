@@ -8,10 +8,10 @@ BookLogging is a book tracking app that tracks and provides analytics on reading
 
 React.js    
 Django REST Framework    
-[Google Books API](https://developers.google.com/books){:target="_blank"}    
-[Chart.js](https://www.chartjs.org/){:target="_blank"}    
-[Moment.js](https://momentjs.com/){:target="_blank"}    
-[GIMP](https://www.gimp.org/){:target="_blank"}
+[Google Books API](https://developers.google.com/books)    
+[Chart.js](https://www.chartjs.org/)     
+[Moment.js](https://momentjs.com/)     
+[GIMP](https://www.gimp.org/) 
 
 ### To Do List
 
