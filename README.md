@@ -13,10 +13,8 @@ Django REST Framework (Backend)
 [Moment.js](https://momentjs.com/)     
 [GIMP](https://www.gimp.org/) 
 
-### To Do List
-
-[] Books + Pages + Users - foreign key relationships    
-
 ### Contact
 
 Justin Zhao | justinzhao265@gmail.com || [GitHub](https://github.com/zhaoj1) | [LinkedIn](https://www.linkedin.com/in/justin-zh/)
+
+note - revamp models - Books + Pages + Users - foreign key relationships    
