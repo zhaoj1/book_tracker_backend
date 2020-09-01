@@ -56,7 +56,8 @@ JWT_AUTH = {
 }
 
 CORS_ORIGIN_WHITELIST = [
-    'https://zhaoj1.github.io/book-logging/#/'
+    'https://zhaoj1.github.io/book-logging/#/',
+    'http://localhost:3000/book-logging'
 ]
 
 MIDDLEWARE = [
